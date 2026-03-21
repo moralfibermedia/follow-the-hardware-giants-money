@@ -504,9 +504,13 @@ body {
 .victory-sources a:hover { color: white; }
 
 /* RESET */
+.button-row {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
 .reset-btn {
-  display: block;
-  margin: 0 auto;
   background: none;
   border: 2px solid var(--ink);
   color: var(--ink);
@@ -514,13 +518,39 @@ body {
   font-size: 11px;
   letter-spacing: 3px;
   text-transform: uppercase;
-  padding: 10px 24px;
+  padding: 12px 28px;
   cursor: pointer;
   transition: all 0.2s;
 }
 .reset-btn:hover {
   background: var(--ink);
   color: var(--paper);
+}
+.share-btn {
+  background: var(--ink);
+  border: 2px solid var(--ink);
+  color: var(--paper);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  padding: 12px 28px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.share-btn:hover {
+  background: var(--red);
+  border-color: var(--red);
+}
+.share-btn.copied {
+  background: var(--green);
+  border-color: var(--green);
+}
+.victory-share {
+  margin-top: 20px;
+  font-size: 13px;
+  padding: 14px 36px;
+  letter-spacing: 2px;
 }
 
 /* FOOTER */
@@ -888,9 +918,13 @@ body {
       <a href="https://www.opensecrets.org/orgs/home-depot/recipients?id=D000000419" target="_blank">Home Depot — OpenSecrets</a>
       <a href="https://www.opensecrets.org/orgs/lowe-s-companies/recipients?id=D000027296" target="_blank">Lowe's — OpenSecrets</a>
     </div>
+    <button class="share-btn victory-share" onclick="shareGame()">📤 Share This Game</button>
   </div>
 
-  <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+  <div class="button-row">
+    <button class="reset-btn" onclick="resetGame()">Reset Game</button>
+    <button class="share-btn" onclick="shareGame()">📤 Share Game</button>
+  </div>
 
   <!-- SHARE & FOLLOW -->
   <div class="share-section">
@@ -1165,6 +1199,55 @@ document.querySelectorAll('.chart-card').forEach(card => {
     }
   });
 });
+
+// SHARE GAME
+function shareGame() {
+  const url = window.location.href;
+  const text = 'Three hardware stores. Three donation profiles. Can you match the company to the cash? 🔍💰';
+  const title = 'Follow the Money — Moral Fiber Media';
+
+  // Try Web Share API first (mobile browsers, some desktop)
+  if (navigator.share) {
+    navigator.share({ title: title, text: text, url: url }).catch(() => {});
+    return;
+  }
+
+  // Fallback: copy link to clipboard
+  const shareText = text + '\n' + url;
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(shareText).then(() => {
+      showShareConfirm();
+    }).catch(() => {
+      fallbackCopy(shareText);
+    });
+  } else {
+    fallbackCopy(shareText);
+  }
+}
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.position = 'fixed';
+  ta.style.opacity = '0';
+  document.body.appendChild(ta);
+  ta.focus();
+  ta.select();
+  try { document.execCommand('copy'); showShareConfirm(); } catch(e) {}
+  document.body.removeChild(ta);
+}
+
+function showShareConfirm() {
+  document.querySelectorAll('.share-btn').forEach(btn => {
+    const original = btn.textContent;
+    btn.textContent = '✓ Link Copied';
+    btn.classList.add('copied');
+    setTimeout(() => {
+      btn.textContent = original;
+      btn.classList.remove('copied');
+    }, 2500);
+  });
+}
 </script>
 </body>
 </html>
