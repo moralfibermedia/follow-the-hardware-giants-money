@@ -30,9 +30,23 @@ body {
 }
 
 .game-container {
-  max-width: 860px;
+  max-width: 960px;
   margin: 0 auto;
   padding: 32px 24px 60px;
+}
+
+/* FULL-BLEED BREAKOUT */
+.full-bleed {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  padding-left: calc(50vw - 50%);
+  padding-right: calc(50vw - 50%);
+}
+.full-bleed-edge {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
 }
 
 /* MASTHEAD */
@@ -81,7 +95,7 @@ body {
 .intro-bar {
   background: var(--ink);
   color: var(--paper);
-  padding: 18px 24px;
+  padding: 22px max(32px, calc(50vw - 460px));
   margin-bottom: 28px;
   font-size: 18px;
   font-weight: 300;
@@ -440,7 +454,7 @@ body {
   display: none;
   background: var(--ink);
   color: white;
-  padding: 28px 24px;
+  padding: 32px max(32px, calc(50vw - 460px));
   text-align: center;
   margin-bottom: 20px;
   animation: victoryIn 0.6s ease both;
@@ -737,7 +751,7 @@ body {
 
 <div class="game-container">
   <!-- MASTHEAD -->
-  <div class="masthead">
+  <div class="masthead full-bleed">
     <div class="kicker">Interactive · Political Donations · OpenSecrets Data</div>
     <h1>FOLLOW<br><em>THE MONEY</em></h1>
     <div class="sub">Three hardware stores. Three donation profiles. Can you match the company to the cash?</div>
@@ -745,7 +759,7 @@ body {
   </div>
 
   <!-- INSTRUCTIONS -->
-  <div class="intro-bar">
+  <div class="intro-bar full-bleed-edge">
     <strong>How to play:</strong> Tap a company below, then tap the chart you think it belongs to. Match all three correctly to reveal the sources.
   </div>
 
@@ -866,7 +880,7 @@ body {
   </div>
 
   <!-- VICTORY -->
-  <div class="victory-banner" id="victoryBanner">
+  <div class="victory-banner full-bleed-edge" id="victoryBanner">
     <h2>You <em>followed the money.</em></h2>
     <div class="victory-sub">All three matched. Every dollar is public record — here are the receipts.</div>
     <div class="victory-sources">
