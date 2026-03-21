@@ -74,6 +74,26 @@ body {
   margin: 8px 0 4px;
 }
 .masthead h1 em { font-style: italic; color: var(--red); }
+.masthead .episode-tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--paper);
+  background: var(--ink);
+  display: inline-block;
+  padding: 5px 16px;
+  margin-top: 14px;
+}
+.masthead .episode-name {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(22px, 4vw, 36px);
+  font-weight: 900;
+  font-style: italic;
+  color: var(--red);
+  margin: 8px 0 4px;
+  letter-spacing: 0.5px;
+}
 .masthead .sub {
   font-size: 16px;
   font-style: italic;
@@ -784,6 +804,8 @@ body {
   <div class="masthead full-bleed">
     <div class="kicker">Interactive · Political Donations · OpenSecrets Data</div>
     <h1>FOLLOW<br><em>THE MONEY</em></h1>
+    <div class="episode-tag">Puzzle #1</div>
+    <div class="episode-name">"Hardware Giants"</div>
     <div class="sub">Three hardware stores. Three donation profiles. Can you match the company to the cash?</div>
     <div class="dateline">Source: OpenSecrets.org · All Federal Candidates · 2024 Cycle</div>
   </div>
