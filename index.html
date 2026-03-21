@@ -9,7 +9,7 @@
 :root {
   --ink: #0d0d0d;
   --paper: #f2ede4;
-  --red: #c0392b;
+  --red: #d63031;
   --blue: #2c3e6b;
   --gold: #b8860b;
   --muted: #6b6256;
@@ -38,8 +38,8 @@ body {
 /* MASTHEAD */
 .masthead {
   text-align: center;
-  border-top: 4px solid var(--ink);
-  border-bottom: 1px solid var(--ink);
+  border-top: 5px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
   padding: 14px 0 10px;
   margin-bottom: 6px;
   animation: fadeIn 0.5s ease both;
@@ -53,7 +53,7 @@ body {
 }
 .masthead h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(26px, 5vw, 46px);
+  font-size: clamp(32px, 6vw, 56px);
   font-weight: 900;
   line-height: 1.05;
   letter-spacing: -1px;
@@ -61,10 +61,10 @@ body {
 }
 .masthead h1 em { font-style: italic; color: var(--red); }
 .masthead .sub {
-  font-size: 14px;
+  font-size: 16px;
   font-style: italic;
   color: var(--muted);
-  margin-top: 6px;
+  margin-top: 8px;
   line-height: 1.5;
 }
 .dateline {
@@ -81,9 +81,9 @@ body {
 .intro-bar {
   background: var(--ink);
   color: var(--paper);
-  padding: 16px 20px;
+  padding: 18px 24px;
   margin-bottom: 28px;
-  font-size: 14px;
+  font-size: 18px;
   font-weight: 300;
   font-style: italic;
   line-height: 1.6;
@@ -109,7 +109,7 @@ body {
 }
 .score-item span {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--ink);
   margin-left: 6px;
@@ -131,7 +131,7 @@ body {
 }
 
 .chart-card {
-  border: 2px solid var(--ink);
+  border: 3px solid var(--ink);
   background: white;
   position: relative;
   transition: all 0.3s ease;
@@ -197,7 +197,7 @@ body {
 
 .card-total {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: 900;
   text-align: center;
   margin-bottom: 16px;
@@ -345,7 +345,7 @@ body {
 
 /* DRAGGABLE LOGOS TRAY */
 .logos-tray {
-  border: 2px solid var(--ink);
+  border: 3px solid var(--ink);
   background: white;
   padding: 20px;
   margin-bottom: 28px;
@@ -370,9 +370,9 @@ body {
 }
 
 .logo-tile {
-  width: 140px;
-  height: 90px;
-  border: 2px solid var(--ink);
+  width: 160px;
+  height: 110px;
+  border: 3px solid var(--ink);
   background: white;
   display: flex;
   align-items: center;
@@ -412,7 +412,7 @@ body {
 
 .logo-tile .logo-name {
   font-family: 'Playfair Display', serif;
-  font-size: 14px;
+  font-size: 17px;
   font-weight: 700;
   color: var(--ink);
   text-align: center;
@@ -576,14 +576,14 @@ body {
 /* SHARE & FOLLOW */
 .share-section {
   margin-top: 32px;
-  border: 2px solid var(--ink);
+  border: 3px solid var(--ink);
   background: white;
   padding: 24px;
   animation: fadeIn 0.5s 0.35s ease both;
 }
 .share-section .section-head {
   font-family: 'Playfair Display', serif;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: 900;
   margin-bottom: 6px;
 }
@@ -598,13 +598,15 @@ body {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .social-link {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
-  border: 1.5px solid var(--ink);
-  padding: 10px 18px;
+  border: 2px solid var(--ink);
+  padding: 12px 20px;
   text-decoration: none;
   color: var(--ink);
   font-family: 'JetBrains Mono', monospace;
@@ -612,6 +614,8 @@ body {
   letter-spacing: 1.5px;
   text-transform: uppercase;
   transition: all 0.2s;
+  flex: 1 1 auto;
+  min-width: 140px;
 }
 .social-link:hover {
   background: var(--ink);
@@ -684,7 +688,7 @@ body {
 /* LICENSE BLOCK */
 .license-block {
   margin-top: 24px;
-  border-top: 2px solid var(--ink);
+  border-top: 3px solid var(--ink);
   padding-top: 16px;
   display: flex;
   flex-direction: column;
@@ -721,12 +725,11 @@ body {
 
 /* Mobile adjustments */
 @media (max-width: 500px) {
-  .logo-tile { width: 100px; height: 70px; }
-  .logo-tile .logo-name { font-size: 12px; }
+  .logo-tile { width: 120px; height: 85px; }
+  .logo-tile .logo-name { font-size: 14px; }
   .bar-amount { width: 60px; font-size: 9px; }
   .bar-pct { width: 38px; font-size: 9px; }
   .social-row { flex-direction: column; }
-  .social-link { justify-content: center; }
 }
 </style>
 </head>
@@ -884,7 +887,7 @@ body {
       <a class="social-link" href="https://www.tiktok.com/@moralfibermedia" target="_blank"><span class="social-icon">♪</span> TikTok</a>
       <a class="social-link" href="https://bsky.app/profile/moralfibermedia.bsky.social" target="_blank"><span class="social-icon">🦋</span> Bluesky</a>
       <a class="social-link" href="https://sez.us/user/MoralFiberMedia" target="_blank"><span class="social-icon">💬</span> Sez.us</a>
-      <a class="social-link" href="https://moralfibermedia.com" target="_blank"><span class="social-icon">✉</span> Newsletter (Substack)</a>
+      <a class="social-link" href="https://moralfibermedia.com" target="_blank"><span class="social-icon">✉</span> Substack</a>
     </div>
   </div>
 
