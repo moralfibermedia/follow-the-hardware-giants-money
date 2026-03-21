@@ -743,7 +743,7 @@ body {
 
   <!-- INSTRUCTIONS -->
   <div class="intro-bar">
-    <strong>How to play:</strong> Tap a logo below, then tap the chart you think it belongs to. Match all three correctly to reveal the sources.
+    <strong>How to play:</strong> Tap a company below, then tap the chart you think it belongs to. Match all three correctly to reveal the sources.
   </div>
 
   <!-- SCORE -->
@@ -775,7 +775,7 @@ body {
           </div>
         </div>
         <div class="drop-zone tap-target" data-company="lowes" id="drop-lowes">
-          <div class="drop-zone-text">Drop logo here</div>
+          <div class="drop-zone-text">Drop company here</div>
         </div>
         <div class="source-reveal" id="src-lowes">
           <div class="src-label">Source</div>
@@ -805,7 +805,7 @@ body {
           </div>
         </div>
         <div class="drop-zone tap-target" data-company="homedepot" id="drop-homedepot">
-          <div class="drop-zone-text">Drop logo here</div>
+          <div class="drop-zone-text">Drop company here</div>
         </div>
         <div class="source-reveal" id="src-homedepot">
           <div class="src-label">Source</div>
@@ -835,7 +835,7 @@ body {
           </div>
         </div>
         <div class="drop-zone tap-target" data-company="ace" id="drop-ace">
-          <div class="drop-zone-text">Drop logo here</div>
+          <div class="drop-zone-text">Drop company here</div>
         </div>
         <div class="source-reveal" id="src-ace">
           <div class="src-label">Source</div>
@@ -847,7 +847,7 @@ body {
 
   <!-- LOGO TRAY -->
   <div class="logos-tray" id="logosTray">
-    <div class="tray-label">Tap a logo, then tap a chart to match</div>
+    <div class="tray-label">Tap a company, then tap a chart to match</div>
     <div class="logos-row" id="logosRow">
       <div class="logo-tile" data-company="homedepot" id="tile-homedepot" onclick="selectTile(this)">
         <div class="logo-name">Home<br>Depot</div>
@@ -880,37 +880,39 @@ body {
     <div class="section-head">Share & Follow</div>
     <div class="section-sub">Got an idea for the next "Follow the Money" puzzle? A company, an industry, a voting record? Send us your suggestions — we're building a series and your curiosity drives it.</div>
     <div class="social-row">
-      <a class="social-link" href="#" target="_blank"><span class="social-icon">▶</span> YouTube</a>
-      <a class="social-link" href="#" target="_blank"><span class="social-icon">♪</span> TikTok</a>
-      <a class="social-link" href="#" target="_blank"><span class="social-icon">✉</span> Newsletter</a>
+      <a class="social-link" href="https://www.youtube.com/@MoralFiberMedia" target="_blank"><span class="social-icon">▶</span> YouTube</a>
+      <a class="social-link" href="https://www.tiktok.com/@moralfibermedia" target="_blank"><span class="social-icon">♪</span> TikTok</a>
+      <a class="social-link" href="https://bsky.app/profile/moralfibermedia.bsky.social" target="_blank"><span class="social-icon">🦋</span> Bluesky</a>
+      <a class="social-link" href="https://sez.us/user/MoralFiberMedia" target="_blank"><span class="social-icon">💬</span> Sez.us</a>
+      <a class="social-link" href="https://moralfibermedia.com" target="_blank"><span class="social-icon">✉</span> Newsletter (Substack)</a>
     </div>
   </div>
 
   <!-- INSPIRED BY -->
   <div class="inspired-section">
     <div class="section-label">Inspired By…</div>
-    <a class="inspired-link" href="#" target="_blank">
+    <a class="inspired-link" href="https://www.resistandunsubscribe.com/" target="_blank">
       <div class="inspired-num">1</div>
       <div>
-        <div class="inspired-title">Link Title</div>
-        <div class="inspired-desc">Brief description of the source or inspiration</div>
-        <div class="inspired-url">url.example.com</div>
+        <div class="inspired-title">Resist and Unsubscribe</div>
+        <div class="inspired-desc">Consumer-powered accountability — tracking corporate boycotts and their market impact</div>
+        <div class="inspired-url">resistandunsubscribe.com</div>
       </div>
     </a>
-    <a class="inspired-link" href="#" target="_blank">
+    <a class="inspired-link" href="https://www.nokings.org/" target="_blank">
       <div class="inspired-num">2</div>
       <div>
-        <div class="inspired-title">Link Title</div>
-        <div class="inspired-desc">Brief description of the source or inspiration</div>
-        <div class="inspired-url">url.example.com</div>
+        <div class="inspired-title">No Kings</div>
+        <div class="inspired-desc">Grassroots civic action — events, trainings, and know-your-rights resources</div>
+        <div class="inspired-url">nokings.org</div>
       </div>
     </a>
-    <a class="inspired-link" href="#" target="_blank">
+    <a class="inspired-link" href="https://ash.harvard.edu/ai-and-democracy-movements-project/" target="_blank">
       <div class="inspired-num">3</div>
       <div>
-        <div class="inspired-title">Link Title</div>
-        <div class="inspired-desc">Brief description of the source or inspiration</div>
-        <div class="inspired-url">url.example.com</div>
+        <div class="inspired-title">AI and Democracy Movements Project — Harvard Ash Center</div>
+        <div class="inspired-desc">Research at the intersection of artificial intelligence, civic engagement, and democratic participation</div>
+        <div class="inspired-url">ash.harvard.edu</div>
       </div>
     </a>
   </div>
@@ -972,13 +974,12 @@ document.querySelectorAll('.drop-zone.tap-target').forEach(zone => {
     if (guessCompany === targetCompany) {
       // CORRECT
       handleCorrectMatch(guessCompany, this, selectedTile);
+      selectedTile.classList.remove('selected');
+      selectedTile = null;
     } else {
-      // WRONG
+      // WRONG — keep tile selected so player can try again immediately
       handleWrongMatch(this);
     }
-
-    selectedTile.classList.remove('selected');
-    selectedTile = null;
   });
 });
 
@@ -1047,7 +1048,7 @@ function resetGame() {
   // Reset drop zones
   document.querySelectorAll('.drop-zone').forEach(zone => {
     zone.classList.remove('has-match');
-    zone.innerHTML = '<div class="drop-zone-text">Drop logo here</div>';
+    zone.innerHTML = '<div class="drop-zone-text">Drop company here</div>';
   });
 
   // Reset sources
